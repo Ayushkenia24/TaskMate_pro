@@ -1,0 +1,50 @@
+import axios from 'axios';
+
+// ✅ Use import.meta.env instead of process.env for Vite
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
+// Create axios instance
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Add token to requests
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Auth APIs
+export const authAPI = {
+  register: (data) => api.post('/auth/register', data),
+  login: (data) => api.post('/auth/login', data),
+  getProfile: () => api.get('/auth/profile'),
+};
+
+// Task APIs
+export const taskAPI = {
+  createTask: (data) => api.post('/tasks', data),
+  getTasks: (date) => api.get(`/tasks${date ? `?date=${date}` : ''}`),
+  getTasksByDate: (date) => api.get(`/tasks/date/${date}`),
+  updateTask: (id, data) => api.put(`/tasks/${id}`, data),
+  markTaskDone: (id) => api.patch(`/tasks/${id}/done`),
+  deleteTask: (id) => api.delete(`/tasks/${id}`),
+};
+
+// Report APIs
+export const reportAPI = {
+  getDailyReport: (date) => api.get(`/reports/daily/${date}`),
+  getWeeklyReport: () => api.get('/reports/weekly'),
+  getOverallStats: () => api.get('/reports/stats'),
+};
+
+export default api;

@@ -1,0 +1,145 @@
+.new-landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.decorative-icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.icon {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.6;
+}
+
+.icon-target {
+  top: 10%;
+  left: 8%;
+}
+
+.icon-rocket {
+  top: 15%;
+  right: 10%;
+}
+
+.icon-bolt {
+  top: 50%;
+  right: 5%;
+}
+
+.icon-muscle {
+  bottom: 15%;
+  right: 8%;
+}
+
+.landing-container {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-card {
+  background: rgba(30, 30, 46, 0.95);
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 40px;
+  padding: 60px 80px;
+  max-width: 600px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+}
+
+.app-icon {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 30px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+}
+
+.icon-check {
+  font-size: 70px;
+  color: white;
+  font-weight: bold;
+}
+
+.app-title {
+  font-size: 56px;
+  font-weight: 800;
+  margin: 20px 0 15px;
+  background: linear-gradient(135deg, #fff 0%, #e0e0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-subtitle {
+  font-size: 20px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.btn-large {
+  padding: 18px 60px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 16px;
+  margin-bottom: 50px;
+}
+
+.feature-icons-row {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.feature-icon-item {
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.feature-icon-item p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .landing-card {
+    padding: 40px 30px;
+  }
+  
+  .app-title {
+    font-size: 42px;
+  }
+  
+  .app-subtitle {
+    font-size: 18px;
+  }
+  
+  .icon {
+    font-size: 40px;
+  }
+  
+  .feature-icons-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
